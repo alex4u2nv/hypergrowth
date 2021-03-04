@@ -96,3 +96,10 @@ class OneController(Component):
 
 **Notice that the Name of the controller `OneController` matches the name of the interface group `one`. And the method
 that handles the command, `do_stuff` also matches the command definition `do_stuff` under the `@one.command()`**
+
+# Usage
+* activate your python venv `python3 -m venv path-to-env`
+* Develop your Controller
+* Install `pip3 install .`
+* Optionally, activate shell for [auto-completion](https://click.palletsprojects.com/en/7.x/bashcomplete/)
+
