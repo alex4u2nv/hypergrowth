@@ -3,6 +3,7 @@ import functools
 import hashlib
 import inspect
 import logging
+from dataclasses import dataclass, field
 from importlib import import_module
 from inspect import isclass
 from pathlib import Path
@@ -10,49 +11,19 @@ from pkgutil import iter_modules
 
 import click
 
-package = {
-    "controller": "component.controller"
-}
 
-
+@dataclass(frozen=True)
 class Qualifier:
-    def __init__(self):
-        self._data: str = None
-
-    def get(self, key):
-        return self._data.get(key)
+    name: str
+    md5: str = field(init=False)
 
     def get_md5(self):
+        return self.md5
+
+    def __post_init__(self):
         md5 = hashlib.md5()
-        md5.update(self._data.encode("UTF-8"))
-        return md5.hexdigest().lower()
-
-    def __getitem__(self, key):
-        return self._data[key]
-
-    def __str__(self):
-        if not self._data:
-            raise AttributeError("Qualifier is Empty")
-        return self.get_md5()
-
-    class Builder:
-        __qualifier: 'Qualifier'
-
-        def __init__(self):
-            self.__qualifier = None
-
-        def set_name(self, name) -> 'Qualifier.Builder':
-            self.__qualifier._data = name
-            return self
-
-        def build(self, name=None) -> 'Qualifier':
-            qualifier = Qualifier()
-            if name:
-                qualifier._data = name
-                return qualifier
-            if not self.__qualifier._data:
-                raise AttributeError("Qualifier attributes cannot be empty")
-            return copy.deepcopy(self.__qualifier)
+        md5.update(self.name.encode("UTF-8"))
+        object.__setattr__(self, "md5", md5.hexdigest().lower())
 
 
 class Component:
@@ -69,16 +40,13 @@ class Component:
 
     @classmethod
     def __get_instance_id(cls, qualifier_str):
-        qualifier: Qualifier = (Qualifier
-                                .Builder()
-                                .build(qualifier_str))
+        qualifier: Qualifier = (Qualifier(qualifier_str))
         return f"{cls.__name__}_{qualifier.get_md5()}", qualifier
 
     @classmethod
     def instance(cls, clz=None, qualifier="default", **kwargs):
         """
 
-        :param args:
         :param clz: Allow overriding the .instance() , and passing custom class
         :param qualifier: the name for this instance
         :param kwargs:
