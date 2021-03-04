@@ -113,15 +113,13 @@ def load_modules(package, handle):
                 globals()[attribute_name] = attribute
 
 
-load_modules(package.get("controller"), lambda *args, **kwargs: None)
-
-
 def interface(f):
     """
     Use this to define click interfaces that could be portable to different clients
     :param f:
     :return:
     """
+
     @click.pass_context
     def run(ctx, *args, **kwargs):
         tokenize_command_path = ctx.command_path.split(' ')

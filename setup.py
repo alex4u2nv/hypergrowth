@@ -30,7 +30,7 @@ setuptools.setup(
     py_modules=['component.interface'],
     entry_points='''
         [console_scripts]
-        doit=component.doit:cli
+        doit=component.entrypoint:cli
     ''',
     install_requires=[
         'click'
