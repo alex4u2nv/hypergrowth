@@ -64,13 +64,13 @@ from hypergrowth import Configuration
 
 @click.group()
 def cli():
-  pass
+    pass
 
 
 Configuration(
-  controllers="example.controller",
-  interfaces="example.interface",
-  main_command_group=cli
+    controllers="example.controller",
+    interfaces="example.interface",
+    main_command_group=cli
 
 )
 
@@ -90,8 +90,8 @@ from hypergrowth.framework import Component
 
 class OneController(Component):
 
-  def do_stuff(self, name, count):
-    print(f"doing it {name} {count}")
+    def do_stuff(self, name, count):
+        print(f"doing it {name} {count}")
 
 ```
 
@@ -99,8 +99,29 @@ class OneController(Component):
 that handles the command, `do_stuff` also matches the command definition `do_stuff` under the `@one.command()`**
 
 # Usage
+
 * activate your python venv `python3 -m venv path-to-env`
 * Develop your Controller
 * Install `pip3 install .`
 * Optionally, activate shell for [auto-completion](https://click.palletsprojects.com/en/7.x/bashcomplete/)
 
+# Additional Notes
+
+### Autocompletion for Big Sur zsh shell
+
+Auto completion for the zsh shell doesn't work right of the bat. The easiest way for me to get this working, was to
+install `zsh-completion`
+via `brew info zsh-completions`
+Then adding the following to `.zshrc`
+
+```shell
+if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+    autoload -Uz compinit
+    compinit
+fi
+
+#HG and hg is based on your configuration in the setup.py
+eval "$(_HG_COMPLETE=source_zsh hg)"  
+```
