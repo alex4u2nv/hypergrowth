@@ -15,6 +15,9 @@ import click
 
 @dataclass(frozen=True)
 class Qualifier:
+    """
+    Use this qualifier for designating a unique object
+    """
     name: str
     md5: str = field(init=False)
 
