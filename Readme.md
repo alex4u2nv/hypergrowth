@@ -16,8 +16,13 @@ use the Model/Controller structure to organize your code based on what they do. 
 
 ## Layout
 
+#### hypergrowth
+
+* `framework` - This contains implementation to route the `interface` to the `controller`
+
+#### example
+
 * `model` - Data structures that represents the concepts that you're working with
-* `interface` - The command line interface that the user would interact with
 * `repo` - Implement Singletons for interacting with external datasets
 * `resources` - Any declarative configuration files used in the project
 * `service` - Reusable service class that perform the real work, in a parameterized way. Should not store data in these
@@ -26,7 +31,14 @@ use the Model/Controller structure to organize your code based on what they do. 
 * `error` - Define custom Exceptions here
 * `entrypoint.py` - The default entrypoint script.
 * `tests` - Unit tests for the project
-* `framework` - This contains implementation to route the `interface` to the `controller`
+
+#### example_shared
+
+This project you will share among all your projects. So that they can all inherit the same Command line interface, even
+though, execution may be different. In that, your first project would execute directly, whereas, your distributed
+project may execute through a lambda or api-gateway interface
+
+* `interface` - The command line interface that the user would interact with
 
 ### Entrypoint
 
