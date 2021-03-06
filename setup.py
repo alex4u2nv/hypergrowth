@@ -25,12 +25,12 @@ setuptools.setup(
         'example': ['example/resources/*'],
     },
     include_package_data=True,
-    packages=setuptools.find_packages(),
+    packages=setuptools.find_packages(exclude=("tests",)),
     python_requires=">=3.8",
     py_modules=['example_shared.interface'],
     entry_points='''
         [console_scripts]
-        hg=example.entrypoint:cli
+        hgex=example.entrypoint:cli
     ''',
     install_requires=[
         'click'

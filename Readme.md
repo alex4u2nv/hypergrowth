@@ -135,5 +135,5 @@ if type brew &>/dev/null; then
 fi
 
 #HG and hg is based on your configuration in the setup.py
-eval "$(_HG_COMPLETE=source_zsh hg)"  
+eval "$(_HGEX_COMPLETE=source_zsh hgex)"  
 ```
