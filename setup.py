@@ -5,7 +5,7 @@ with open("Readme.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="hypergrowth",
-    version="0.0.1",
+    version="1.0.0",
     author="Alexander Mahabir",
     author_email="alex.mahabir@gmail.com",
     description="A Skeleton Project with some handy libraries, helpers, and patterns to build on",
