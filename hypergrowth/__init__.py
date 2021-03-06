@@ -1,3 +1,5 @@
+__version__ = "1.0.0"
+
 from click import Group
 
 from hypergrowth.framework import load_modules
