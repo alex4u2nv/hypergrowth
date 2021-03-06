@@ -112,9 +112,10 @@ that handles the command, `do_stuff` also matches the command definition `do_stu
 
 # Usage
 
-* activate your python venv `python3 -m venv path-to-env`
-* Develop your Controller
-* Install `pip3 install .`
+* activate your python venv `python3 -m venv path-to-env; source path-to-env/bin/activate`
+* install the framework with examples: `pip3 install hypergrowth`
+* Test the example command `hgex one do-stuff jump`. This should print `doing it jump 1`
+* Follow the `example` and `example_shared` examples structure in the github project, to implement your own project 
 * Optionally, activate shell for [auto-completion](https://click.palletsprojects.com/en/7.x/bashcomplete/)
 
 # Additional Notes
