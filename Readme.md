@@ -59,20 +59,21 @@ The following is an example for setting up the interface.
 ```python
 import click
 
-from hypergrowth.framework import interface
+from hypergrowth import Configuration
 
 
 @click.group()
-def one():
+def cli():
   pass
 
 
-@one.command()
-@click.option('--count', default=1, help='number of greetings')
-@click.argument('name')
-@interface
-def do_stuff(count, name):
-  pass
+Configuration(
+  controllers="example.controller",
+  interfaces="example.interface",
+  main_command_group=cli
+
+)
+
 
 ```
 
