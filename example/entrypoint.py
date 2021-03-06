@@ -14,7 +14,7 @@ def cli():
 
 Configuration(
     controllers="example.controller",
-    interfaces="example.interface",
+    interfaces="example_shared.interface",
     main_command_group=cli
 
 )

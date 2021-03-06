@@ -9,8 +9,7 @@ def one():
 
 
 @one.command()
-@click.option('--count', default=1, help='number of greetings',
-              autocompletion=[("alex", "a"), ("one", "o"), ("two", "t")])
+@click.option('--count', default=1, help='number of greetings')
 @click.argument('name')
 @interface
 def do_stuff(count, name):
