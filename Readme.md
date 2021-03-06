@@ -30,8 +30,8 @@ use the Model/Controller structure to organize your code based on what they do. 
 
 ### Entrypoint
 
-The Entrypoint is a module inside the component directory `entrypoint.py`. It sets up the main command line interface
-object. It then loads interfaces defined in `component.interface` and consolidates them as sub-commands.
+The Entrypoint is a module inside the example directory `entrypoint.py`. It sets up the main command line interface
+object. It then loads interfaces defined in `example.interface` and consolidates them as sub-commands.
 
 ### Setup
 
@@ -40,7 +40,7 @@ The command name can be define here. Currently, it's set to `doit` as shown in t
 ```python
 entry_points = '''
         [console_scripts]
-        doit=component.entrypoint:cli
+        hg=example.entrypoint:cli
     '''
 ```
 
@@ -50,7 +50,7 @@ The interface section is meant to define your interface, with associated documen
 intended process or logic. This will go into a matching Controller The reason for this, is so that the interface can be
 used for multiple projects, where you want the execution to be handled differently.
 
-`component.interface.interface_one` demonstrates how to setup your interface. The interface is implemented
+`example.interface.interface_one` demonstrates how to setup your interface. The interface is implemented
 using [click](https://click.palletsprojects.com/)
 Click provides a clean way to implement the command line interface, including options, and nested commands.
 
