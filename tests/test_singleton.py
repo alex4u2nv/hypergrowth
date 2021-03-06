@@ -1,7 +1,7 @@
 import unittest
 import uuid
 
-from component.framework import Component
+from hypergrowth.framework import Component
 
 
 class MyComp(Component):

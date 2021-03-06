@@ -21,7 +21,7 @@ use the Model/Controller structure to organize your code based on what they do. 
 * `repo` - Implement Singletons for interacting with external datasets
 * `resources` - Any declarative configuration files used in the project
 * `service` - Reusable service class that perform the real work, in a parameterized way. Should not store data in these
-  clases.
+  classes.
 * `controller` - Handle the arguments passed in from the command line interface
 * `error` - Define custom Exceptions here
 * `entrypoint.py` - The default entrypoint script.
@@ -59,12 +59,12 @@ The following is an example for setting up the interface.
 ```python
 import click
 
-from component.framework import interface
+from hypergrowth.framework import interface
 
 
 @click.group()
 def one():
-    pass
+  pass
 
 
 @one.command()
@@ -72,7 +72,7 @@ def one():
 @click.argument('name')
 @interface
 def do_stuff(count, name):
-    pass
+  pass
 
 ```
 
@@ -84,13 +84,13 @@ Larger processes with reusable parts should be defined as reusable services.
 An example controller to handle the above interface, will look like the following:
 
 ```python
-from component.framework import Component
+from hypergrowth.framework import Component
 
 
 class OneController(Component):
 
-    def do_stuff(self, name, count):
-        print(f"doing it {name} {count}")
+  def do_stuff(self, name, count):
+    print(f"doing it {name} {count}")
 
 ```
 

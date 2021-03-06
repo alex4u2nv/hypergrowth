@@ -4,14 +4,14 @@ with open("Readme.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="project-template",  # Replace with your own username
+    name="hypergrowth",
     version="0.0.1",
     author="Alexander Mahabir",
     author_email="alex.mahabir@gmail.com",
     description="A Skeleton Project with some handy libraries, helpers, and patterns to build on",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/alex4u2nv/project-template",
+    url="https://github.com/alex4u2nv/hypergrowth",
     project_urls={
         "Bug Tracker": "https://github.com/alex4u2nv/project-template/issues",
     },
@@ -20,9 +20,9 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    package_dir={'component': 'component'},
+    package_dir={'hypergrowth': 'hypergrowth'},
     package_data={
-        'component': ['component/resources/*'],
+        'hypergrowth': ['hypergrowth/resources/*'],
     },
     include_package_data=True,
     packages=setuptools.find_packages(),
@@ -30,7 +30,7 @@ setuptools.setup(
     py_modules=['component.interface'],
     entry_points='''
         [console_scripts]
-        doit=component.entrypoint:cli
+        hg=example.entrypoint:cli
     ''',
     install_requires=[
         'click'

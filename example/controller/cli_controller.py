@@ -1,4 +1,4 @@
-from component.framework import Component
+from hypergrowth.framework import Component
 
 
 class OneController(Component):
