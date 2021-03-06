@@ -4,7 +4,8 @@ import hashlib
 import inspect
 import logging
 from dataclasses import dataclass, field
-from importlib import import_module
+from enum import EnumMeta, Enum
+from importlib import import_module, abc
 from inspect import isclass
 from pathlib import Path
 from pkgutil import iter_modules
@@ -97,3 +98,31 @@ def interface(f):
         handler(**kwargs)
 
     return functools.update_wrapper(run, f)
+
+
+class ABCEnumMeta(abc.ABCMeta, EnumMeta):
+    pass
+
+
+class GeneralEnum(Enum, metaclass=ABCEnumMeta):
+    """
+    General Enum with method to get a list of all values
+    """
+
+    @classmethod
+    def values(cls):
+        return list(map(lambda x: x.value, cls))
+
+
+class DefaultEnum(GeneralEnum):
+    """
+    An Enum type that will return a default. useful for defining commands
+    """
+    @classmethod
+    @abc.abstractmethod
+    def default(cls) -> Enum:
+        pass
+
+    @classmethod
+    def default_value(cls):
+        return cls.default().value
