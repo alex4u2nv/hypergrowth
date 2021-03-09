@@ -3,12 +3,12 @@ from os import path
 import setuptools
 
 this_directory = path.abspath(path.dirname(__file__))
-with open(path.join(this_directory, "Readme.md"), "r", encoding="utf-8") as fh:
+with open(path.join(this_directory, "README.md"), "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="hypergrowth",
-    version="1.2.0",
+    version="1.3.0",
     author="Alexander Mahabir",
     author_email="alex.mahabir@gmail.com",
     description="A Skeleton Project with some handy libraries, helpers, and patterns to build on",
