@@ -3,9 +3,10 @@ import functools
 import hashlib
 import inspect
 import logging
+from abc import ABCMeta, abstractmethod
 from dataclasses import dataclass, field
 from enum import EnumMeta, Enum
-from importlib import import_module, abc
+from importlib import import_module
 from inspect import isclass
 from pathlib import Path
 from pkgutil import iter_modules
@@ -103,7 +104,7 @@ def interface(f):
     return functools.update_wrapper(run, f)
 
 
-class ABCEnumMeta(abc.ABCMeta, EnumMeta):
+class ABCEnumMeta(ABCMeta, EnumMeta):
     pass
 
 
@@ -122,7 +123,7 @@ class DefaultEnum(GeneralEnum):
     An Enum type that will return a default. useful for defining commands
     """
     @classmethod
-    @abc.abstractmethod
+    @abstractmethod
     def default(cls) -> Enum:
         pass
 
