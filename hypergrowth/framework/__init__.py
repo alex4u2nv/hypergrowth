@@ -97,10 +97,13 @@ def interface(f):
     def run(ctx, *args, **kwargs):
         tokenize_command_path = ctx.command_path.split(' ')
         ctrl = f"{tokenize_command_path[1].capitalize()}Controller"
-        print(ctrl)
-        handler = getattr(globals().get(ctrl).instance(),
-                          str(tokenize_command_path[2]).replace("-", "_"))
-        handler(**kwargs)
+        try:
+            handler = getattr(globals().get(ctrl).instance(),
+                              str(tokenize_command_path[2]).replace("-", "_"))
+            handler(**kwargs)
+        except AttributeError as ae:
+            logging.fatal(f"Could not find controller {ctrl}")
+            raise
 
     return functools.update_wrapper(run, f)
 
@@ -123,6 +126,7 @@ class DefaultEnum(GeneralEnum):
     """
     An Enum type that will return a default. useful for defining commands
     """
+
     @classmethod
     @abstractmethod
     def default(cls) -> Enum:
