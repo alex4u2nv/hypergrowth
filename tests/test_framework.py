@@ -1,7 +1,10 @@
+import hashlib
 import unittest
 import uuid
 
-from hypergrowth.framework import Component
+import pytest
+
+from hypergrowth.framework import Component, Qualifier
 
 
 class MyComp(Component):
@@ -13,12 +16,20 @@ class MyComp(Component):
         return self._internal
 
 
-class TestSingleton(unittest.TestCase):
+@pytest.mark.framework
+class TestFramework(unittest.TestCase):
 
-    def test_singleton(self):
+    def test_component(self):
         a = MyComp()
         b = MyComp()
         self.assertNotEqual(a, b)
         self.assertNotEqual(a.internal(), b.internal())
         self.assertEqual(MyComp.instance(), MyComp.instance())
         self.assertEqual(MyComp.instance().instance, MyComp.instance().instance)
+
+    def test_get_md5(self):
+        name = "testing"
+        qual = Qualifier(name=name)
+        md5 = hashlib.md5()
+        md5.update(name.encode("UTF-8"))
+        assert md5.hexdigest().lower() == qual.get_md5()
