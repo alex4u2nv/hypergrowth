@@ -97,6 +97,7 @@ def interface(f):
     def run(ctx, *args, **kwargs):
         tokenize_command_path = ctx.command_path.split(' ')
         ctrl = f"{tokenize_command_path[1].capitalize()}Controller"
+        print(ctrl)
         handler = getattr(globals().get(ctrl).instance(),
                           str(tokenize_command_path[2]).replace("-", "_"))
         handler(**kwargs)
