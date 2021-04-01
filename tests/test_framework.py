@@ -16,7 +16,6 @@ class MyComp(Component):
         return self._internal
 
 
-@pytest.mark.framework
 class TestFramework(unittest.TestCase):
 
     def test_component(self):
