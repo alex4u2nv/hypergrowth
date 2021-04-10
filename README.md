@@ -38,7 +38,7 @@ This project you will share among all your projects. So that they can all inheri
 though, execution may be different. In that, your first project would execute directly, whereas, your distributed
 project may execute through a lambda or api-gateway interface
 
-🤝 `interface` - The command line interface that the user would interact with.  
+🗣️`interface` - The command line interface that the user would interact with.  
 
 ### 🟢 Entrypoint
 
@@ -56,7 +56,7 @@ entry_points = '''
     '''
 ```
 
-### 🤝 Interface
+### 🗣️ Interface
 
 The interface section is meant to define your interface, with associated documentation, without actually executing the
 intended process or logic. This will go into a matching Controller The reason for this, is so that the interface can be
