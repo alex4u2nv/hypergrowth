@@ -20,7 +20,7 @@ use the Model/Controller structure to organize your code based on what they do. 
 
 📂 `framework` - This contains implementation to route the `interface` to the `controller`.  
 
-#### example
+#### 💡 example
 
 🟡 `model` - Data structures that represents the concepts that you're working with.  
 🗄️ `repo` - Implement Singletons for interacting with external datasets.  
@@ -118,9 +118,9 @@ that handles the command, `do_stuff` also matches the command definition `do_stu
 * Follow the `example` and `example_shared` examples structure in the github project, to implement your own project 
 * Optionally, activate shell for [auto-completion](https://click.palletsprojects.com/en/7.x/bashcomplete/)
 
-# Additional Notes
+# ℹ️ Additional Notes
 
-### Autocompletion for Big Sur zsh shell
+### 💻 Autocompletion for Big Sur zsh shell
 
 Auto completion for the zsh shell doesn't work right of the bat. The easiest way for me to get this working, was to
 install `zsh-completion`
