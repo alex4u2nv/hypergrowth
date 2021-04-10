@@ -16,36 +16,36 @@ use the Model/Controller structure to organize your code based on what they do. 
 
 ## Layout
 
-#### hypergrowth
+#### 🌴 hypergrowth
 
-* `framework` - This contains implementation to route the `interface` to the `controller`
+📂 `framework` - This contains implementation to route the `interface` to the `controller`.  
 
 #### example
 
-* `model` - Data structures that represents the concepts that you're working with
-* `repo` - Implement Singletons for interacting with external datasets
-* `resources` - Any declarative configuration files used in the project
-* `service` - Reusable service class that perform the real work, in a parameterized way. Should not store data in these
-  classes.
-* `controller` - Handle the arguments passed in from the command line interface
-* `error` - Define custom Exceptions here
-* `entrypoint.py` - The default entrypoint script.
-* `tests` - Unit tests for the project
+🟡 `model` - Data structures that represents the concepts that you're working with.  
+🗄️ `repo` - Implement Singletons for interacting with external datasets.  
+📜 `resources` - Any declarative configuration files used in the project.  
+⚙️  `service` - Reusable service class that perform the real work, in a parameterized way. Should not store data in these
+  classes.  
+🎛️ `controller` - Handle the arguments passed in from the command line interface.  
+⚠️ `error` - Define custom Exceptions here.  
+🟢 `entrypoint.py` - The default entrypoint script.  
+🧪 `tests` - Unit tests for the project.  
 
-#### example_shared
+#### 👐 example_shared
 
 This project you will share among all your projects. So that they can all inherit the same Command line interface, even
 though, execution may be different. In that, your first project would execute directly, whereas, your distributed
 project may execute through a lambda or api-gateway interface
 
-* `interface` - The command line interface that the user would interact with
+🤝 `interface` - The command line interface that the user would interact with.  
 
-### Entrypoint
+### 🟢 Entrypoint
 
 The Entrypoint is a module inside the example directory `entrypoint.py`. It sets up the main command line interface
 object. It then loads interfaces defined in `example.interface` and consolidates them as sub-commands.
 
-### Setup
+### 🏗️ Setup
 
 The command name can be define here. Currently, it's set to `doit` as shown in the code segment below:
 
@@ -56,7 +56,7 @@ entry_points = '''
     '''
 ```
 
-### Interface
+### 🤝 Interface
 
 The interface section is meant to define your interface, with associated documentation, without actually executing the
 intended process or logic. This will go into a matching Controller The reason for this, is so that the interface can be
@@ -89,7 +89,7 @@ Configuration(
 
 ```
 
-### Controller
+### 🎛️ Controller
 
 The controller is the start for your implementation logic. Small commands can be fully implemented in the Controller.
 Larger processes with reusable parts should be defined as reusable services.
@@ -107,10 +107,10 @@ class OneController(Component):
 
 ```
 
-**Notice that the Name of the controller `OneController` matches the name of the interface group `one`. And the method
+** Notice that the Name of the controller `OneController` matches the name of the interface group `one`. And the method
 that handles the command, `do_stuff` also matches the command definition `do_stuff` under the `@one.command()`**
 
-# Usage
+# ℹ️ Usage
 
 * activate your python venv `python3 -m venv path-to-env; source path-to-env/bin/activate`
 * install the framework with examples: `pip3 install hypergrowth`
