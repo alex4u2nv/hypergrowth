@@ -1,4 +1,4 @@
-# What is this?
+# ℹ️ What is this?
 
 This project is a skeleton framework for building advanced command line utilities. It was developed so that it can grow
 with usage. For example, you would typically start off with some lightweight utilities for automating the manual
@@ -9,12 +9,12 @@ The interface was kept separated, so that we have flexibility with distribution.
 implemented with the same interface and documentation, which may invoke the main project through a lambda function, or
 lambda via api-gateway.
 
-# How does it work?
+# ❔ How does it work?
 
 The project is distributed in a typical MVC layout. The View in this case would be the Command Line Interface, while you
 use the Model/Controller structure to organize your code based on what they do. The layout explained:
 
-## Layout
+## 💠 Layout
 
 #### 🌴 hypergrowth
 
