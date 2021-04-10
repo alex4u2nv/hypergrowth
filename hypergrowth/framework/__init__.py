@@ -3,8 +3,11 @@ import functools
 import hashlib
 import inspect
 import logging
+import os
+import uuid
 from abc import ABCMeta, abstractmethod
 from dataclasses import dataclass, field
+from datetime import datetime
 from enum import EnumMeta, Enum
 from importlib import import_module
 from inspect import isclass
@@ -12,6 +15,7 @@ from pathlib import Path
 from pkgutil import iter_modules
 
 import click
+from awslambdaric.lambda_context import LambdaContext
 
 
 @dataclass(frozen=True)
@@ -86,6 +90,11 @@ def load_modules(package, handle):
                 globals()[attribute_name] = attribute
 
 
+os.environ = {
+    "AWS_LAMBDA_FUNCTION_NAME": "local-client",
+}
+
+
 def interface(f):
     """
     Use this to define click interfaces that could be portable to different clients
@@ -100,7 +109,14 @@ def interface(f):
         try:
             handler = getattr(globals().get(ctrl).instance(),
                               str(tokenize_command_path[2]).replace("-", "_"))
-            handler(**kwargs)
+            cli_context: LambdaContext = LambdaContext(
+                invoke_id=f"client-{uuid.uuid4().hex}",
+                client_context={},
+                cognito_identity={},
+                epoch_deadline_time_in_ms=int(datetime.now().timestamp() * 1000),
+                invoked_function_arn="arn:local:client",
+            )
+            handler(**kwargs, context=cli_context)
         except AttributeError as ae:
             logging.fatal(f"Could not find controller {ctrl}")
             raise

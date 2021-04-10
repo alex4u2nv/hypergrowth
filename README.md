@@ -102,13 +102,18 @@ from hypergrowth.framework import Component
 
 class OneController(Component):
 
-    def do_stuff(self, name, count):
+    def do_stuff(self, name, count, context):
         print(f"doing it {name} {count}")
 
 ```
 
 ** Notice that the Name of the controller `OneController` matches the name of the interface group `one`. And the method
-that handles the command, `do_stuff` also matches the command definition `do_stuff` under the `@one.command()`**
+that handles the command, `do_stuff` also matches the command definition `do_stuff` under the `@one.command()`.
+
+In addition to these arguments, an extra required context argument is required. This will contain context information
+relating to the execution. For local execution, the function name will be local-cli; however, when deployed as a Lambda 
+function, it will be that of the function name.
+**
 
 # ℹ️ Usage
 

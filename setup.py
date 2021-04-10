@@ -36,6 +36,7 @@ setuptools.setup(
         hgex=example.entrypoint:cli
     ''',
     install_requires=[
-        'click'
+        'click',
+        'awslambdaric'
     ]
 )
