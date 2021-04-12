@@ -4,10 +4,9 @@ if [ ! $1 ]; then
 	grep current < .bumpversion.cfg
 	exit 1
 fi
-rm -rf dist/*
 bump2version --new-version "$1"  minor --verbose
 tox
 twine check .tox/dist/*
-#twine upload .tox/dist/* -u "${PYPI_USERNAME}" -p "${PYPI_PASSWORD}"
-#git push origin main
-#git push origin --tags
+twine upload .tox/dist/* -u "${PYPI_USERNAME}" -p "${PYPI_PASSWORD}"
+git push origin main
+git push origin --tags

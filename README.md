@@ -115,16 +115,29 @@ relating to the execution. For local execution, the function name will be local-
 function, it will be that of the function name.
 **
 
-# ℹ️ Usage
+# Requirements
+## Local Shell Utility
+* **Python >= 3.8** -- https://www.python.org/downloads/
+* **tox** -- https://tox.readthedocs.io/en/latest/install.html
 
+## Local AWS SAM Testing
+* **sam** -- https://aws.amazon.com/serverless/sam/
+* **docker** -- https://docs.docker.com/get-docker/
+
+# ℹ️ Usage
+## Local
 * activate your python venv `python3 -m venv path-to-env; source path-to-env/bin/activate`
 * install the framework with examples: `pip3 install hypergrowth`
 * Test the example command `hgex one do-stuff jump`. This should print `doing it jump 1`
 * Follow the `example` and `example_shared` examples structure in the github project, to implement your own project 
 * Optionally, activate shell for [auto-completion](https://click.palletsprojects.com/en/7.x/bashcomplete/)
 
-# ℹ️ Additional Notes
+## Lambda Via SAM
+* build `docker` image via `sam build`
+* configure an `events.json` for testing, using the example in `events/events.json`
+* execute via `sam local invoke -e events/events.json`
 
+# ℹ️ Additional Notes
 ### 💻 Autocompletion for Big Sur zsh shell
 
 Auto completion for the zsh shell doesn't work right of the bat. The easiest way for me to get this working, was to
