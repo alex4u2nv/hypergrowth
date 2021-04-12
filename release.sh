@@ -4,9 +4,17 @@ if [ ! $1 ]; then
 	grep current < .bumpversion.cfg
 	exit 1
 fi
-bump2version --new-version "$1"  minor --verbose
-tox
-twine check .tox/dist/*
-twine upload .tox/dist/* -u "${PYPI_USERNAME}" -p "${PYPI_PASSWORD}"
+if ! bump2version --new-version "$1"  minor --verbose; then
+  exit 1
+fi
+if ! tox; then
+  exit 1
+fi
+if ! twine check .tox/dist/*; then
+  exit 1
+fi
+if ! twine upload .tox/dist/* -u "${PYPI_USERNAME}" -p "${PYPI_PASSWORD}"; then
+  exit 1
+fi
 git push origin main
 git push origin --tags
