@@ -12,19 +12,35 @@ Globals:
 
 Resources:
   HyperGrowthFunction:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Type: AWS::Serverless::Function
     Properties:
-      PackageType: Image
+      CodeUri: framework/example_lambda
+      Handler: entry.lambda_handler
+      Runtime: python3.8
+      Layers:
+        - !Ref HyperGrowthLayer
       Events:
         HyperGrowth:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Type: Api
           Properties:
             Path: /example
             Method: get
     Metadata:
-      Dockerfile: Dockerfile
-      DockerContext: ./
-      DockerTag: python3.8-v1
+      BuildMethod: makefile
+
+  HyperGrowthLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: hypergrowth-layer
+      Description: hypergrowth dependencies
+      ContentUri: framework/
+      RetentionPolicy: Retain
+      CompatibleRuntimes:
+        - python3.8
+    Metadata:
+      BuildMethod: makefile
+
+
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function

@@ -1,6 +1,6 @@
 import click
 
-from hypergrowth.framework import interface
+from framework.hypergrowth.framework import interface
 
 
 @click.group()

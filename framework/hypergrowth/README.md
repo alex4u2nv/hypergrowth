@@ -18,7 +18,7 @@ use the Model/Controller structure to organize your code based on what they do. 
 
 #### 🌴 hypergrowth
 
-📂 `framework` - This contains implementation to route the `interface` to the `controller`.  
+📂 `framework` - This contains implementation to route the `interface` to the `controller`.
 
 #### 💡 example
 
@@ -26,11 +26,11 @@ use the Model/Controller structure to organize your code based on what they do. 
 🗄️ `repo` - Implement Singletons for interacting with external datasets.  
 📜 `resources` - Any declarative configuration files used in the project.  
 ⚙️  `service` - Reusable service class that perform the real work, in a parameterized way. Should not store data in these
-  classes.  
+classes.  
 🎛️ `controller` - Handle the arguments passed in from the command line interface.  
 ⚠️ `error` - Define custom Exceptions here.  
 🟢 `entrypoint.py` - The default entrypoint script.  
-🧪 `tests` - Unit tests for the project.  
+🧪 `tests` - Unit tests for the project.
 
 #### 👐 example_shared
 
@@ -38,7 +38,7 @@ This project you will share among all your projects. So that they can all inheri
 though, execution may be different. In that, your first project would execute directly, whereas, your distributed
 project may execute through a lambda or api-gateway interface
 
-🗣️`interface` - The command line interface that the user would interact with.  
+🗣️`interface` - The command line interface that the user would interact with.
 
 ### 🟢 Entrypoint
 
@@ -111,7 +111,7 @@ class OneController(Component):
 that handles the command, `do_stuff` also matches the command definition `do_stuff` under the `@one.command()`.
 
 In addition to these arguments, an extra required context argument is required. This will contain context information
-relating to the execution. For local execution, the function name will be local-cli; however, when deployed as a Lambda 
+relating to the execution. For local execution, the function name will be local-cli; however, when deployed as a Lambda
 function, it will be that of the function name.
 **
 
@@ -120,22 +120,13 @@ function, it will be that of the function name.
 * **Python >= 3.8** -- https://www.python.org/downloads/
 * **tox** -- https://tox.readthedocs.io/en/latest/install.html
 
-## Local AWS SAM Testing
-* **sam** -- https://aws.amazon.com/serverless/sam/
-* **docker** -- https://docs.docker.com/get-docker/
-
 # ℹ️ Usage
 ## Local
 * activate your python venv `python3 -m venv path-to-env; source path-to-env/bin/activate`
 * install the framework with examples: `pip3 install hypergrowth`
 * Test the example command `hgex one do-stuff jump`. This should print `doing it jump 1`
-* Follow the `example` and `example_shared` examples structure in the github project, to implement your own project 
+* Follow the `example` and `example_shared` examples structure in the github project, to implement your own project
 * Optionally, activate shell for [auto-completion](https://click.palletsprojects.com/en/7.x/bashcomplete/)
-
-## Lambda Via SAM
-* build `docker` image via `sam build`
-* configure an `events.json` for testing, using the example in `events/events.json`
-* execute via `sam local invoke -e events/events.json`
 
 # ℹ️ Additional Notes
 ### 💻 Autocompletion for Big Sur zsh shell

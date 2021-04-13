@@ -2,8 +2,6 @@ import hashlib
 import unittest
 import uuid
 
-import pytest
-
 from hypergrowth.framework import Component, Qualifier
 
 
