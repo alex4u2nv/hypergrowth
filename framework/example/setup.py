@@ -26,7 +26,7 @@ setuptools.setup(
     python_requires=">=3.8",
     entry_points='''
         [console_scripts]
-        hgex=entrypoint:cli
+        hgex=example.entrypoint:cli
     ''',
     install_requires=[
         'click',

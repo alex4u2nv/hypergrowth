@@ -4,7 +4,6 @@ import setuptools
 
 this_directory = path.abspath(path.dirname(__file__))
 
-
 setuptools.setup(
     name="example_shared",
     version="1.6.4",

@@ -23,7 +23,7 @@ Resources:
         HyperGrowth:
           Type: Api
           Properties:
-            Path: /example
+            Path: /hello
             Method: get
     Metadata:
       BuildMethod: makefile

@@ -12,7 +12,6 @@ class Configuration:
                  interfaces: str,
                  main_command_group: Group):
         """
-
         :param controllers: path to controllers `example.controller`
         :param interfaces: path to interfaces `example.interfaces`
         :param main_command_group: cli
