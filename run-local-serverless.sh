@@ -13,5 +13,7 @@ fi
 if ! which docker &> /dev/null; then
   echo "Please install Docker: https://docs.docker.com/get-docker/"
 fi
+find . -iname "*.egg-info" -d  -exec rm -rf {} \;
+find . -iname ".tox" -d
 sam build
 sam local invoke -e events/event.json
