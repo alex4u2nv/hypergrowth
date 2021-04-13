@@ -3,7 +3,7 @@ from os import path
 import setuptools
 
 setuptools.setup(
-    name="example",
+    name="hypergrowth_example",
     version="1.7.0",
     author="Alexander Mahabir",
     author_email="alex.mahabir@gmail.com",

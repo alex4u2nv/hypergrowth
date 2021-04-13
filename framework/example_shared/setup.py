@@ -5,7 +5,7 @@ import setuptools
 this_directory = path.abspath(path.dirname(__file__))
 
 setuptools.setup(
-    name="example_shared",
+    name="hypergrowth_example_shared",
     version="1.7.0",
     author="Alexander Mahabir",
     author_email="alex.mahabir@gmail.com",

@@ -4,10 +4,10 @@ if [ ! $1 ]; then
 	grep current < .bumpversion.cfg
 	exit 1
 fi
-if ! bump2version --new-version "$1"  minor --verbose; then
-  exit 1
-fi
-if ! tox; then
+#if ! bump2version --new-version "$1"  minor --verbose; then
+#  exit 1
+#fi
+if ! (cd framework/hypergrowth; tox); then
   exit 1
 fi
 if ! twine check framework/hypergrowth/.tox/dist/*; then
