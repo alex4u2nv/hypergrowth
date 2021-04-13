@@ -8,7 +8,7 @@ with open(path.join(this_directory, "./README.md"), "r", encoding="utf-8") as fh
 
 setuptools.setup(
     name="hypergrowth",
-    version="1.6.4",
+    version="1.7.0",
     author="Alexander Mahabir",
     author_email="alex.mahabir@gmail.com",
     description="Hypergrowth framework to build upon",

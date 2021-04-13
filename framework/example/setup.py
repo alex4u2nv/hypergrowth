@@ -4,7 +4,7 @@ import setuptools
 
 setuptools.setup(
     name="example",
-    version="1.6.4",
+    version="1.7.0",
     author="Alexander Mahabir",
     author_email="alex.mahabir@gmail.com",
     description="A Skeleton Project with some handy libraries, helpers, and patterns to build on",
